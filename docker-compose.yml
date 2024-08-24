@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: fastapi-container
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: djazzy
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: battleship
+    ports:
+      - "5432:5432"
